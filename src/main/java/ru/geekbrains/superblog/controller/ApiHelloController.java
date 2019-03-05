@@ -20,29 +20,34 @@ public class ApiHelloController {
     }
 
     @GetMapping("/post")
-    public List<Post> posts(@RequestParam(value = "query", required = false) String query){
+    public List<Post> posts(@RequestParam(value = "query", required = false) String query) {
+        System.out.println("Hello");
         return postService.search(query);
     }
 
     @PostMapping("/post")
-    public ResponseEntity<Post> post(@RequestBody PostDTO postDTO, BindingResult bindingResult){
-       if (bindingResult.hasErrors()) ResponseEntity.badRequest();
+    public ResponseEntity<Post> post(@RequestBody PostDTO postDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) ResponseEntity.badRequest();
         postService.save(postDTO);
+        System.out.println("Hello");
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/post/{id}")
-    public void deleteById(@PathVariable Long id){
+    public void deleteById(@PathVariable Long id) {
         postService.delete(id);
+        System.out.println("Hello");
+
     }
 
     @DeleteMapping("/post")
-    public void deleteAll(){
+    public void deleteAll() {
         postService.deleteAll();
+        System.out.println("Hello");
     }
 
     @GetMapping("/post/{id}")
-    public ResponseEntity<Post> findById(@PathVariable Long id){
+    public ResponseEntity<Post> findById(@PathVariable Long id) {
         return ResponseEntity.ok(postService.findById(id));
     }
 }

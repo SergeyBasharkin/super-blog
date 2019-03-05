@@ -42,14 +42,25 @@ public class DBPostService implements IPostService {
 
     @Override
     public void save(PostDTO postDTO) {
-        String prefix = UUID.randomUUID().toString();
-        String filename = prefix + postDTO.getImageFile().getOriginalFilename();
-        storageService.store(postDTO.getImageFile(), prefix);
+        String filename = postDTO.getImg();
+        if (postDTO.getImageFile() != null) {
+            String prefix = UUID.randomUUID().toString();
+            filename = "/file/" + prefix + postDTO.getImageFile().getOriginalFilename();
+            storageService.store(postDTO.getImageFile(), prefix);
+        }
         postDTO.setImg(filename);
         postRepository.save(Post.builder()
                 .img(postDTO.getImg())
                 .title(postDTO.getTitle())
                 .body(postDTO.getBody())
                 .build());
+    }
+
+    public void delete(Long id) {
+        postRepository.deleteById(id);
+    }
+
+    public void deleteAll() {
+        postRepository.deleteAll();
     }
 }

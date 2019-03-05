@@ -7,7 +7,7 @@
             <div class="col m4 s12 l3">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="/file/${post.img}">
+                        <img class="activator" src="${post.img}">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">${post.title}<i class="material-icons right">more_vert</i></span>

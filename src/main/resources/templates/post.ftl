@@ -6,7 +6,7 @@
     <div class="col s12">
         <div class="card">
             <div class="card-image">
-                <img class="blur" src="/file/${post.img}">
+                <img class="blur" src="${post.img}">
                 <span class="card-title">${post.title}</span>
             </div>
             <div class="card-content">

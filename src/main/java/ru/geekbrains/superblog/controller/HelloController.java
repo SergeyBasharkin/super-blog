@@ -12,6 +12,7 @@ import ru.geekbrains.superblog.dto.PostDTO;
 import ru.geekbrains.superblog.service.api.IPostService;
 import ru.geekbrains.superblog.service.api.StorageService;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 
@@ -58,7 +59,7 @@ public class HelloController {
     }
 
     @GetMapping("/search")
-    public String search(Model model, @RequestParam(required = false) String query) {
+    public String search(Model model, @RequestParam(required = false) String query, HttpServletResponse response) {
         model.addAttribute("posts", postService.search(query));
         return "search";
     }
